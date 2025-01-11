@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Screen</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Courier New', Courier, monospace; /* Retro font */
+            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .loading-container {
+            text-align: center;
+        }
+
+        .loading-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .progress-bar {
+            width: 300px;
+            height: 10px; /* Thin retro-style bar */
+            background-color: white;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0;
+            background-color: black; /* Match background for contrast */
+            transition: width 0.1s linear;
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-container">
+        <div class="loading-text">NOW LOADING...</div>
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+    </div>
+
+    <script>
+        // Target the progress-fill element
+        const progressFill = document.querySelector('.progress-fill');
+
+        // Progress percentage
+        let progress = 0;
+
+        // Set interval to simulate loading progress
+        const interval = setInterval(() => {
+            if (progress < 100) {
+                progress += 2; // Increase progress
+                progressFill.style.width = progress + '%'; // Update width
+            } else {
+                clearInterval(interval); // Stop interval when progress reaches 100%
+                window.location.href = 'Difficulty Selector.html'; // Redirect to your desired link
+            }
+        }, 100); // Adjust the speed of progress here (100ms per step)
+    </script>
+</body>
+</html>
